@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Social Booster</title>
+<title>RapidReach</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ACCESS GATE -->
+<!-- HOTKEY GATE -->
 <div id="gate" class="overlay">
-  <div class="modal">
-    <h2>🔐 Access Required</h2>
-    <input id="hotkey" placeholder="Enter Hotkey">
-    <button class="unlock-btn" onclick="verifyKey()">Unlock Access</button>
+  <div class="popup">
+    <h2>Enter Hotkey</h2>
+    <input id="hotkey" placeholder="Hotkey">
+    <button class="gold" onclick="verifyKey()">Unlock</button>
     <p id="gateError"></p>
   </div>
 </div>
 
+<!-- MAIN -->
 <section class="hero">
   <h1>Grow Your Social Media For Free</h1>
-  <p>Boost your presence with free premium services</p>
+  <p>Boost your social media presence with our free services !!</p>
 
-  <div class="buttons">
+  <div class="main-buttons">
     <button onclick="openPlatform('tiktok')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg"> TikTok
     </button>
@@ -33,30 +34,21 @@
 
 <!-- SERVICE POPUP -->
 <div id="servicePopup" class="overlay hidden">
-  <div class="service-card">
-    <h2 id="platformTitle"></h2>
-
-    <button class="service active" onclick="chooseService('views')">
-      👁 Views
-    </button>
-
-    <button class="service active" onclick="chooseService('likes')">
-      ❤️ Likes
-    </button>
-
-    <button class="cancel-btn" onclick="closePopup('servicePopup')">
-      Cancel
-    </button>
+  <div class="popup">
+    <h2 id="serviceTitle"></h2>
+    <button class="gold" onclick="selectService('views')">👁 Views</button>
+    <button class="gold" onclick="selectService('likes')">❤️ Likes</button>
+    <button class="cancel" onclick="closePopup('servicePopup')">Cancel</button>
   </div>
 </div>
 
 <!-- LINK POPUP -->
 <div id="linkPopup" class="overlay hidden">
-  <div class="service-card">
-    <h2>Submit Link</h2>
-    <input id="linkInput" placeholder="Paste link here">
-    <button class="service active" onclick="submitOrder()">Submit</button>
-    <button class="cancel-btn" onclick="closePopup('linkPopup')">Cancel</button>
+  <div class="popup">
+    <h2 id="linkTitle"></h2>
+    <input id="linkInput" placeholder="Paste link">
+    <button class="gold" onclick="submitOrder()">Submit</button>
+    <button class="cancel" onclick="closePopup('linkPopup')">Cancel</button>
   </div>
 </div>
 
