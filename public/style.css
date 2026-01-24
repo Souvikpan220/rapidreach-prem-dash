@@ -6,6 +6,10 @@ body {
   text-align: center;
 }
 
+html, body {
+  height: 100%;
+}
+
 .hero { margin-top: 18vh; }
 h1 { font-size: 3rem; }
 
@@ -116,5 +120,6 @@ button {
 .platform-btn {
   width: auto;
 }
+
 
 
