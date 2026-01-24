@@ -113,4 +113,8 @@ button {
   z-index: 10;
 }
 
+.platform-btn {
+  width: auto;
+}
+
 
