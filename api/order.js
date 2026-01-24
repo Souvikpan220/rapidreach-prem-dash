@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
   await fetch("https://falconsmm.com/api/v2", {
     method: "POST",
-    headers: {"Content-Type":"application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       key: process.env.FALCONSMM_API_KEY,
       action: "add",
