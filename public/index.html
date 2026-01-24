@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grow Your Social Media</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg">
+</head>
+<body>
+
+<!-- HOTKEY POPUP -->
+<div id="gate" class="overlay">
+  <div class="modal">
+    <h2>🔐 Access Required</h2>
+    <input id="hotkey" placeholder="Enter Hotkey">
+    <button onclick="verifyKey()">Unlock</button>
+    <p id="gateError"></p>
+  </div>
+</div>
+
+<!-- MAIN UI -->
+<section class="hero">
+  <h1>Grow Your Social Media For Free</h1>
+  <p>Boost your social media presence with our free services !!</p>
+
+  <div class="buttons">
+    <button onclick="openPlatform('tiktok')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg"> TikTok
+    </button>
+    <button onclick="openPlatform('instagram')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"> Instagram
+    </button>
+  </div>
+</section>
+
+<!-- SERVICE POPUP -->
+<div id="servicePopup" class="overlay hidden">
+  <div class="modal">
+    <h2 id="platformTitle"></h2>
+    <button onclick="selectService('views')">Views</button>
+    <button onclick="selectService('likes')">Likes</button>
+  </div>
+</div>
+
+<!-- LINK POPUP -->
+<div id="linkPopup" class="overlay hidden">
+  <div class="modal">
+    <h2>Submit Link</h2>
+    <input id="linkInput" placeholder="Paste link here">
+    <button onclick="submitOrder()">Submit</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
