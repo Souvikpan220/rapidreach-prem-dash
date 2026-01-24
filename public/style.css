@@ -88,3 +88,10 @@ button {
   border: 1px solid #333;
   color: white;
 }
+/* ensure main buttons are clickable */
+.main-buttons,
+.platform-btn {
+  position: relative;
+  z-index: 10;
+}
+
