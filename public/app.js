@@ -17,7 +17,9 @@ async function verifyKey() {
     });
 
     if (res.ok) {
-      document.getElementById("gate").style.display = "none";
+      const gate = document.getElementById("gate");
+gate.classList.add("hidden");
+gate.style.pointerEvents = "none";
     } else {
       error.innerText = "Access Denied";
       input.value = "";
@@ -27,3 +29,4 @@ async function verifyKey() {
     error.innerText = "Server error";
   }
 }
+
