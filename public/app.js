@@ -37,7 +37,6 @@ async function verifyKey() {
 
     if (res.ok) {
        document.getElementById("gate").classList.add("hidden");
-  document.getElementById("mainContent").classList.remove("hidden");
       const gate = document.getElementById("gate");
 gate.classList.add("hidden");
 gate.style.pointerEvents = "none";
@@ -50,6 +49,7 @@ gate.style.pointerEvents = "none";
     error.innerText = "Server error";
   }
 }
+
 
 
 
