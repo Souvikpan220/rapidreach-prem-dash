@@ -12,8 +12,9 @@ html, body {
 
 .hero {
   min-height: 100vh;
+  margin-top: 18vh;
 }
-.hero { margin-top: 18vh; }
+
 h1 { font-size: 3rem; }
 
 .main-buttons {
@@ -36,6 +37,7 @@ h1 { font-size: 3rem; }
   cursor: pointer;
   min-width: 140px;
   justify-content: center;
+  width: auto;
 }
 
 .platform-btn img {
@@ -50,6 +52,7 @@ h1 { font-size: 3rem; }
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9999; /* IMPORTANT FIX */
 }
 
 .hidden { display: none; }
@@ -80,11 +83,6 @@ h1 { font-size: 3rem; }
   }
 }
 
-@keyframes pop {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
 input {
   width: 100%;
   padding: 12px;
@@ -113,17 +111,3 @@ button {
   border: 1px solid #333;
   color: white;
 }
-/* ensure main buttons are clickable */
-.main-buttons,
-.platform-btn {
-  position: relative;
-  z-index: 10;
-}
-
-.platform-btn {
-  width: auto;
-}
-
-
-
-
