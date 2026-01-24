@@ -40,6 +40,9 @@ async function verifyKey() {
       const gate = document.getElementById("gate");
 gate.classList.add("hidden");
 gate.style.pointerEvents = "none";
+        const main = document.getElementById("mainContent");
+  main.classList.remove("hidden");
+}
     } else {
       error.innerText = "Access Denied";
       input.value = "";
@@ -49,6 +52,7 @@ gate.style.pointerEvents = "none";
     error.innerText = "Server error";
   }
 }
+
 
 
 
