@@ -40,6 +40,9 @@ async function verifyKey() {
 function openPlatform(p) {
   platform = p;
 
+  // HIDE MAIN BUTTONS WHILE POPUP IS OPEN
+  document.getElementById("platformButtons").style.display = "none";
+
   const title = document.getElementById("serviceTitle");
   title.innerText =
     p === "tiktok" ? "TikTok Services" : "Instagram Services";
@@ -61,6 +64,9 @@ function chooseService(s) {
 
 function closePopup(id) {
   document.getElementById(id).classList.add("hidden");
+
+  // SHOW MAIN BUTTONS AGAIN
+  document.getElementById("platformButtons").style.display = "flex";
 }
 
 /* ================= SUBMIT ================= */
