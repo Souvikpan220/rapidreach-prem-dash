@@ -10,6 +10,9 @@ html, body {
   height: 100%;
 }
 
+.hero {
+  min-height: 100vh;
+}
 .hero { margin-top: 18vh; }
 h1 { font-size: 3rem; }
 
@@ -120,6 +123,7 @@ button {
 .platform-btn {
   width: auto;
 }
+
 
 
 
