@@ -4,16 +4,17 @@
 <meta charset="UTF-8">
 <title>Grow Your Social Media</title>
 <link rel="stylesheet" href="style.css">
-<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg">
 </head>
 <body>
 
-<!-- HOTKEY POPUP -->
+<!-- ACCESS GATE -->
 <div id="gate" class="overlay">
   <div class="modal">
     <h2>🔐 Access Required</h2>
     <input id="hotkey" placeholder="Enter Hotkey">
-    <button onclick="verifyKey()">Unlock</button>
+    <button id="unlockBtn" class="unlock-btn" onclick="verifyKey()">
+      <span>Unlock Access</span>
+    </button>
     <p id="gateError"></p>
   </div>
 </div>
@@ -25,10 +26,13 @@
 
   <div class="buttons">
     <button onclick="openPlatform('tiktok')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg"> TikTok
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg">
+      TikTok
     </button>
+
     <button onclick="openPlatform('instagram')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"> Instagram
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+      Instagram
     </button>
   </div>
 </section>
