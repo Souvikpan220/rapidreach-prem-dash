@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Grow Your Social Media</title>
+<title>Social Booster</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,27 +12,21 @@
   <div class="modal">
     <h2>🔐 Access Required</h2>
     <input id="hotkey" placeholder="Enter Hotkey">
-    <button id="unlockBtn" class="unlock-btn" onclick="verifyKey()">
-      <span>Unlock Access</span>
-    </button>
+    <button class="unlock-btn" onclick="verifyKey()">Unlock Access</button>
     <p id="gateError"></p>
   </div>
 </div>
 
-<!-- MAIN UI -->
 <section class="hero">
   <h1>Grow Your Social Media For Free</h1>
-  <p>Boost your social media presence with our free services !!</p>
+  <p>Boost your presence with free premium services</p>
 
   <div class="buttons">
     <button onclick="openPlatform('tiktok')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg">
-      TikTok
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg"> TikTok
     </button>
-
     <button onclick="openPlatform('instagram')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
-      Instagram
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"> Instagram
     </button>
   </div>
 </section>
@@ -40,24 +34,32 @@
 <!-- SERVICE POPUP -->
 <div id="servicePopup" class="overlay hidden">
   <div class="service-card">
-    <h2 id="platformTitle">TikTok Services</h2>
+    <h2 id="platformTitle"></h2>
 
-    <button class="service active" onclick="selectService('views')">
-      👁 Views <span>(Available)</span>
+    <button class="service active" onclick="chooseService('views')">
+      👁 Views
     </button>
 
-    <button class="service disabled">
-      ❤️ Likes <span>(Soon)</span>
+    <button class="service active" onclick="chooseService('likes')">
+      ❤️ Likes
     </button>
 
-    <button class="service disabled">
-      ➕ Followers <span>(Soon)</span>
+    <button class="cancel-btn" onclick="closePopup('servicePopup')">
+      Cancel
     </button>
-
-    <button class="cancel-btn" onclick="closeServicePopup()">Cancel</button>
   </div>
 </div>
-  
+
+<!-- LINK POPUP -->
+<div id="linkPopup" class="overlay hidden">
+  <div class="service-card">
+    <h2>Submit Link</h2>
+    <input id="linkInput" placeholder="Paste link here">
+    <button class="service active" onclick="submitOrder()">Submit</button>
+    <button class="cancel-btn" onclick="closePopup('linkPopup')">Cancel</button>
+  </div>
+</div>
+
 <script src="app.js"></script>
 </body>
 </html>
