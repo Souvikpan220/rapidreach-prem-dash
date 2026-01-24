@@ -59,3 +59,48 @@ input {
   border-radius: 10px;
   border: none;
 }
+
+/* UNIQUE UNLOCK BUTTON */
+.unlock-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #f5c77a, #ff9f1a);
+  color: #111;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.unlock-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.unlock-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.unlock-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(245,199,122,0.45);
+}
+
+.unlock-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
