@@ -2,32 +2,47 @@ let platform = "";
 let service = "";
 const cooldowns = {};
 
+async function verifyKey() {
+  const key = document.getElementById("hotkey").value;
+  const res = await fetch("/api/verify-key", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ key })
+  });
+
+  if (res.ok) {
+    document.getElementById("gate").remove();
+  } else {
+    document.getElementById("gateError").innerText = "Access Denied";
+  }
+}
+
 function openPlatform(p) {
   platform = p;
-  document.getElementById("platformTitle").innerText =
+  document.getElementById("serviceTitle").innerText =
     p === "tiktok" ? "TikTok Services" : "Instagram Services";
   document.getElementById("servicePopup").classList.remove("hidden");
 }
 
-function chooseService(s) {
+function selectService(s) {
   const key = platform + s;
   const now = Date.now();
-
   const limit =
     platform === "instagram" && s === "likes" ? 20 : 10;
 
   if (cooldowns[key] && now - cooldowns[key] < limit * 60000) {
-    alert(
-      platform === "tiktok"
-        ? "TikTok server ratelimit"
-        : "Insta server ratelimit"
-    );
+    alert(platform === "tiktok"
+      ? "TikTok server ratelimit"
+      : "Insta server ratelimit");
     return;
   }
 
   cooldowns[key] = now;
   service = s;
   closePopup("servicePopup");
+
+  document.getElementById("linkTitle").innerText =
+    `Submit ${platform} ${s} link`;
   document.getElementById("linkPopup").classList.remove("hidden");
 }
 
@@ -36,12 +51,10 @@ function closePopup(id) {
 }
 
 async function submitOrder() {
-  const link = document.getElementById("linkInput").value.trim();
-  if (!link) return;
-
+  const link = document.getElementById("linkInput").value;
   closePopup("linkPopup");
 
-  await fetch("/api/order-v2", {
+  await fetch("/api/order", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ platform, service, link })
