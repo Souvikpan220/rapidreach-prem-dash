@@ -3,19 +3,29 @@ let service = "";
 const cooldowns = {};
 
 async function verifyKey() {
-  const key = document.getElementById("hotkey").value;
-  const res = await fetch("/api/verify-key", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ key })
-  });
+  const input = document.getElementById("hotkey");
+  const error = document.getElementById("gateError");
 
-  if (res.ok) {
-    document.getElementById("gate").remove();
-  } else {
-    document.getElementById("gateError").innerText = "Access Denied";
+  error.innerText = "Checking...";
+
+  try {
+    const res = await fetch("/api/verify-key", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key: input.value.trim() })
+    });
+
+    if (res.ok) {
+      document.getElementById("gate").style.display = "none";
+    } else {
+      error.innerText = "Access Denied";
+    }
+  } catch (e) {
+    console.error(e);
+    error.innerText = "Server error";
   }
 }
+
 
 function openPlatform(p) {
   platform = p;
@@ -90,4 +100,5 @@ async function submitOrder() {
 
   alert("Order placed successfully");
 }
+
 
