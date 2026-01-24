@@ -3,14 +3,30 @@ let service = "";
 const cooldowns = {};
 
 async function verifyKey() {
-  const key = document.getElementById("hotkey").value;
-  const res = await fetch("/config/hotkeys.json");
-  const data = await res.json();
+  const input = document.getElementById("hotkey");
+  const error = document.getElementById("gateError");
+  const btn = document.getElementById("unlockBtn");
 
-  if (data.keys.includes(key)) {
-    document.getElementById("gate").style.display = "none";
+  error.innerText = "";
+  btn.innerText = "Checking...";
+  btn.disabled = true;
+
+  const res = await fetch("/api/verify-key", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ key: input.value.trim() })
+  });
+
+  if (res.ok) {
+    document.getElementById("gate").style.opacity = "0";
+    setTimeout(() => {
+      document.getElementById("gate").style.display = "none";
+    }, 300);
   } else {
-    document.getElementById("gateError").innerText = "Access Denied";
+    error.innerText = "❌ Access Denied";
+    btn.innerText = "Unlock Access";
+    btn.disabled = false;
+    input.value = "";
   }
 }
 
@@ -28,7 +44,11 @@ function selectService(s) {
     platform === "instagram" && s === "likes" ? 20 : 10;
 
   if (cooldowns[key] && now - cooldowns[key] < limit * 60000) {
-    alert(platform === "tiktok" ? "TikTok server ratelimit" : "Insta server ratelimit");
+    alert(
+      platform === "tiktok"
+        ? "TikTok server ratelimit"
+        : "Insta server ratelimit"
+    );
     return;
   }
 
@@ -39,12 +59,14 @@ function selectService(s) {
 }
 
 async function submitOrder() {
-  const link = document.getElementById("linkInput").value;
+  const link = document.getElementById("linkInput").value.trim();
+  if (!link) return;
+
   document.getElementById("linkPopup").classList.add("hidden");
 
   await fetch("/api/order", {
     method: "POST",
-    headers: {"Content-Type":"application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ platform, service, link })
   });
 
