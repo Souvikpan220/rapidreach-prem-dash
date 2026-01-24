@@ -39,22 +39,25 @@
 
 <!-- SERVICE POPUP -->
 <div id="servicePopup" class="overlay hidden">
-  <div class="modal">
-    <h2 id="platformTitle"></h2>
-    <button onclick="selectService('views')">Views</button>
-    <button onclick="selectService('likes')">Likes</button>
+  <div class="service-card">
+    <h2 id="platformTitle">TikTok Services</h2>
+
+    <button class="service active" onclick="selectService('views')">
+      👁 Views <span>(Available)</span>
+    </button>
+
+    <button class="service disabled">
+      ❤️ Likes <span>(Soon)</span>
+    </button>
+
+    <button class="service disabled">
+      ➕ Followers <span>(Soon)</span>
+    </button>
+
+    <button class="cancel-btn" onclick="closeServicePopup()">Cancel</button>
   </div>
 </div>
-
-<!-- LINK POPUP -->
-<div id="linkPopup" class="overlay hidden">
-  <div class="modal">
-    <h2>Submit Link</h2>
-    <input id="linkInput" placeholder="Paste link here">
-    <button onclick="submitOrder()">Submit</button>
-  </div>
-</div>
-
+  
 <script src="app.js"></script>
 </body>
 </html>
