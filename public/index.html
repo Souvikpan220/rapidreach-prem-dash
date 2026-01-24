@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RapidReach</title>
-<link rel="stylesheet" href="style.css">
+<title>Social Booster</title>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
@@ -20,26 +20,27 @@
 <!-- MAIN -->
 <section class="hero">
   <h1>Grow Your Social Media For Free</h1>
-  <p>Boost your social media presence with our free services !!</p>
+  <p>Boost your social media presence with our free services</p>
 
-<div class="main-buttons">
-  <button class="platform-btn" onclick="openPlatform('tiktok')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg">
-    TikTok
-  </button>
+  <div class="main-buttons">
+    <button class="platform-btn" onclick="openPlatform('tiktok')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg">
+      TikTok
+    </button>
 
-  <button class="platform-btn" onclick="openPlatform('instagram')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
-    Instagram
-  </button>
-</div>
+    <button class="platform-btn" onclick="openPlatform('instagram')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+      Instagram
+    </button>
+  </div>
+</section>
 
 <!-- SERVICE POPUP -->
 <div id="servicePopup" class="overlay hidden">
   <div class="popup">
     <h2 id="serviceTitle"></h2>
-    <button class="gold" onclick="selectService('views')">👁 Views</button>
-    <button class="gold" onclick="selectService('likes')">❤️ Likes</button>
+    <button class="gold" onclick="chooseService('views')">👁 Views</button>
+    <button class="gold" onclick="chooseService('likes')">❤️ Likes</button>
     <button class="cancel" onclick="closePopup('servicePopup')">Cancel</button>
   </div>
 </div>
@@ -48,13 +49,12 @@
 <div id="linkPopup" class="overlay hidden">
   <div class="popup">
     <h2 id="linkTitle"></h2>
-    <input id="linkInput" placeholder="Paste link">
+    <input id="linkInput" placeholder="Paste link here">
     <button class="gold" onclick="submitOrder()">Submit</button>
     <button class="cancel" onclick="closePopup('linkPopup')">Cancel</button>
   </div>
 </div>
 
-<script src="app.js"></script>
+<script src="/app.js"></script>
 </body>
 </html>
-
