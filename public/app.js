@@ -2,41 +2,14 @@ let platform = "";
 let service = "";
 const cooldowns = {};
 
-async function verifyKey() {
-  const input = document.getElementById("hotkey");
-  const error = document.getElementById("gateError");
-  const btn = document.getElementById("unlockBtn");
-
-  error.innerText = "";
-  btn.innerText = "Checking...";
-  btn.disabled = true;
-
-  const res = await fetch("/api/verify-key", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ key: input.value.trim() })
-  });
-
-  if (res.ok) {
-    document.getElementById("gate").style.opacity = "0";
-    setTimeout(() => {
-      document.getElementById("gate").style.display = "none";
-    }, 300);
-  } else {
-    error.innerText = "❌ Access Denied";
-    btn.innerText = "Unlock Access";
-    btn.disabled = false;
-    input.value = "";
-  }
-}
-
 function openPlatform(p) {
   platform = p;
-  document.getElementById("platformTitle").innerText = p.toUpperCase();
+  document.getElementById("platformTitle").innerText =
+    p === "tiktok" ? "TikTok Services" : "Instagram Services";
   document.getElementById("servicePopup").classList.remove("hidden");
 }
 
-function selectService(s) {
+function chooseService(s) {
   const key = platform + s;
   const now = Date.now();
 
@@ -54,17 +27,21 @@ function selectService(s) {
 
   cooldowns[key] = now;
   service = s;
-  document.getElementById("servicePopup").classList.add("hidden");
+  closePopup("servicePopup");
   document.getElementById("linkPopup").classList.remove("hidden");
+}
+
+function closePopup(id) {
+  document.getElementById(id).classList.add("hidden");
 }
 
 async function submitOrder() {
   const link = document.getElementById("linkInput").value.trim();
   if (!link) return;
 
-  document.getElementById("linkPopup").classList.add("hidden");
+  closePopup("linkPopup");
 
-  await fetch("/api/order", {
+  await fetch("/api/order-v2", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ platform, service, link })
